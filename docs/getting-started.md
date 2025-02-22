@@ -58,6 +58,8 @@ If you get an error about a beet plugin exception, many times it can be resolved
 uv run beet cache --clear
 ```
 
+Additionally, make sure you are running the correct version of Python, as specified above.
+
 ## Submitting changes
 To submit changes to our modules, start by creating a branch. This allows us to review every change separately and allows you to make other changes in the future. Make sure you are on the `master` branch when you do this.
 
