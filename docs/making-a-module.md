@@ -84,7 +84,7 @@ meta:
 
     # Either null or a link to the YouTube video
     video: null
-    # Either null or a link to the wiki page
+    # Link to the wiki page, even if the page does not exist yet
     wiki: https://wiki.gm4.co/wiki/Disassemblers
     # The credits section. Can have different titles each being a list of names
     credits:
