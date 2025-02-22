@@ -104,7 +104,7 @@ Gamemode 4 uses [LanternMC Load](https://github.com/LanternMC/Load) so modules w
 
 The required files to interact with LanternMC Load are generated automatically by a beet plugin included in the `extend.module` config, based on the metadata specified in `meta.gm4.versioning` of the `beet.yaml`.
 
-If all required dependencies are present, Lantern Load will call `init.mcfunction`. This function is written by the developer, and is responsible for adding necessary scoreboards and `/schedule`-ing any clocked functions, specified in `meta.gm4.versioning.schedule_loops`.
+If all required dependencies are present, Lantern Load will call `init.mcfunction`. This function is written by the developer, and is responsible for adding necessary scoreboards and `/schedule`-ing any clocked functions, specified in `meta.gm4.versioning.schedule_loops`. This function will be modified automatically to include version information; overlays of `init.mcfunction` are not supported.
 
 #### Logging
 Messages can be logged during the load process. This can be done by appending to the `queue` field in the `gm4:log` storage. Here are a few examples:
