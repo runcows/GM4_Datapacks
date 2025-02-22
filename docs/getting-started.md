@@ -41,7 +41,7 @@ uv run beet dev --link <world_name> --watch metallurgy *_shamir
 ```
 * `uv run` makes sure that the command uses the correct Python dependencies
 * `beet dev` builds the data packs to the `out` folder
-* `--link <world_name>` copies the packs to a local world (filepath to the world's directory)
+* `--link <world_name>` copies the packs to a local world, automatically looking for the default minecraft folder
 * `--watch` watches for file changes and then rebuilds
 * `metallurgy *_shamir` specifies the list of module IDs to build
 
