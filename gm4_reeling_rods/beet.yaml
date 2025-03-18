@@ -19,7 +19,7 @@ data_pack:
       directory: backport_48
 
 pipeline:
-  - generateNEW
+  - generate_files
   - gm4.plugins.extend.module
 
 meta:
