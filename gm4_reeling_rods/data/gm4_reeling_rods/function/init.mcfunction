@@ -11,4 +11,4 @@ scoreboard objectives add gm4_reeling_rods.bit_count dummy "gm4_reeling_rods bit
 # set_lookup_table generated in generate_files.py
 function gm4_reeling_rods:set_lookup_table
 
-# no main function
+schedule function gm4_reeling_rods:tick 1t

@@ -41,4 +41,4 @@ tag @s remove gm4_reeling_rods.id.14.1
 tag @s remove gm4_reeling_rods.id.15.1
 
 # assign new id
-function gm4_reeling_rods:id/set with storage gm4_reeling_rods:id next
+function gm4_reeling_rods:id/assign with storage gm4_reeling_rods:id next

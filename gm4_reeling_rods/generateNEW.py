@@ -110,7 +110,7 @@ def create_bit_advancements(ctx: Context):
                         "trigger":"minecraft:fishing_rod_hooked",
                         "conditions":{
                             "entity":{
-                                "nbt": f"Tags=\"gm4_reeling_rods.id.{bit}.{value}\""
+                                "nbt": "{" + f"Tags:[\"gm4_reeling_rods.id.{bit}.{value}\"]" + "}"
                             }
                         }
                     }
@@ -123,44 +123,11 @@ def create_bit_advancements(ctx: Context):
                 f"# player adv logic for getting bit {bit} at value {value}",
                 f"# run from advancement fishing/bit_{bit}_{value}\n",
                 f"advancement revoke @s only gm4_reeling_rods:fishing/bit_{bit}_{value}\n",
-                "data modify storage gm4_reeling_rods:temp bit_data set value {bit_tag:\"" + f"gm4_reeling_rods.id.{bit}.{value}, bit:{bit}" + "\"}",
-                "function gm4_reeling_rods:store_player_pos",
-                "tag @s add gm4_reeling_rods.player",
+                "data modify storage gm4_reeling_rods:temp bit_data set value {bit_tag:\"" + f"gm4_reeling_rods.id.{bit}.{value}\", bit:\"{bit}\"" + "}",
                 "data remove storage gm4_reeling_rods:temp enchanted",
-                "function gm4_reeling_rods:player/received_bit with storage gm4_reeling_rods:temp bit_data",
-                "tag @s remove gm4_reeling_rods.player"
-            ])
-            # enchanted rod
-            ctx.data[f"gm4_reeling_rods:fishing/e_bit_{bit}_{value}"] = Advancement({
-                "criteria":{
-                    "fishing_rod_hooked":{
-                        "trigger":"minecraft:fishing_rod_hooked",
-                        "conditions":{
-                            "entity":{
-                                "nbt": f"Tags=\"gm4_reeling_rods.id.{bit}.{value}\""
-                            },
-                            "rod":{
-                                "predicates":{
-                                    "minecraft:enchantments":[
-                                        {"enchantments":"gm4_reeling_rods:reeling"}
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                },
-                "rewards":{
-                    "function": f"gm4_reeling_rods:player/e_bit_{bit}_{value}"
-                }
-            })
-            ctx.data[f"gm4_reeling_rods:player/e_bit_{bit}_{value}"] = Function([
-                f"# player adv logic for getting bit {bit} at value {value} with an enchanted rod",
-                f"# run from advancement fishing/e_bit_{bit}_{value}\n",
-                f"advancement revoke @s only gm4_reeling_rods:fishing/e_bit_{bit}_{value}\n",
-                "data modify storage gm4_reeling_rods:temp bit_data set value {bit_tag:\"" + f"gm4_reeling_rods.id.{bit}.{value}, bit:{bit}" + "\"}",
+                "execute if predicate gm4_reeling_rods:holding_reeling_rod run data modify storage gm4_reeling_rods:temp enchanted set value 1",
                 "function gm4_reeling_rods:store_player_pos",
                 "tag @s add gm4_reeling_rods.player",
-                "data modify storage gm4_reeling_rods:temp enchanted set value 1",
                 "function gm4_reeling_rods:player/received_bit with storage gm4_reeling_rods:temp bit_data",
                 "tag @s remove gm4_reeling_rods.player"
             ])
@@ -181,9 +148,9 @@ def finalSelectFunction(strings: List[List[str]], output_pack: DataPack):
     output_pack["gm4_reeling_rods:fishing/select_type"] = Function(finalFunction)
 
 def create_select_type(ctx: Context, entities: List[Entity]):
-    selectFuncBase: List[List[str]] = [[""],[""]]
-    selectFuncSince61: List[List[str]] = [[""],[""]]
-    selectFuncBackport48: List[List[str]] = [[""],[""]]
+    selectFuncBase: List[List[str]] = [["# non-dismount entities"],["# dismountable entities, action after dismount"]]
+    selectFuncSince61: List[List[str]] = [["# non-dismount entities"],["# dismountable entities, action after dismount"]]
+    selectFuncBackport48: List[List[str]] = [["# non-dismount entities"],["# dismountable entities, action after dismount"]]
     for entity in entities:
         since_61 = "pale_oak" in entity.entity_type
         backport_48 = "minecraft:chest_boat" in entity.entity_type
@@ -197,12 +164,15 @@ def create_select_type(ctx: Context, entities: List[Entity]):
         )
 
         order = 1 if entity.can_dismount else 0     # other action before or after dismounting logic
-        writeTo = [selectFuncSince61] if since_61 else [selectFuncBackport48] if backport_48 else [selectFuncBase, selectFuncSince61]
+        writeTo = [selectFuncSince61] if since_61 else [selectFuncBackport48] if backport_48 else [selectFuncBase, selectFuncSince61] if since_57 else [selectFuncBackport48, selectFuncBase, selectFuncSince61]
+        # since_61      gets since_61, since_57, else
+        # base          gets since_57, else
+        # backport_48   gets backport_48, else
         for write in writeTo:
-            command = "execute "
+            command = f"execute if entity @s[type={entity.entity_type}] "
             if entity.needs_enchantment:
                 command = command + "if data storage gm4_reeling_rods:temp enchanted "
-            command = command + f"if entity @s[type={entity.entity_type}] run return run function gm4_reeling_rods:fishing/{entity_type_no_prefix}/action"
+            command = command + f"run return run function gm4_reeling_rods:fishing/{entity_type_no_prefix}/action"
             write[order].append(command)
     finalSelectFunction(selectFuncBase, ctx.data)
     finalSelectFunction(selectFuncSince61, ctx.data.overlays["since_61"])
