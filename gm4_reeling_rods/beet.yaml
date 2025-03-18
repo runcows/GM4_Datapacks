@@ -19,13 +19,13 @@ data_pack:
       directory: backport_48
 
 pipeline:
-  - generate_files
+  - generateNEW
   - gm4.plugins.extend.module
 
 meta:
   gm4:
     versioning:
-      schedule_loops: []
+      schedule_loops: [tick]
     website:
       description: Reel in more than just fish with these rods! Yoink the chest from the chest boat and more!
       recommended: 
