@@ -128,12 +128,8 @@ def create_select_type(ctx: Context, entities: CSV):
             + entity["command"]
         )
         if entity["can_dismount"].as_bool():
-            lines.append(
-                command
-            )  # dismountable entities should be handled last and are appended to the end of the function
+            lines.append(command)  # dismountable entities should be handled last and are appended to the end of the function
         else:
-            lines.insert(
-                9, command
-            )  # non-dismountable entities should be handled first and are inserted before the dismountable entities
+            lines.insert(9, command)  # non-dismountable entities should be handled first and are inserted before the dismountable entities
 
     ctx.data["gm4_reeling_rods:fished/select_type"] = Function(lines)
