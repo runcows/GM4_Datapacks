@@ -110,7 +110,6 @@ def create_select_type(ctx: Context, entities: CSV):
         "",
         "# non-dismountable entities",
         "",
-        "",
         "# dismounting logic",
         "execute if function gm4_reeling_rods:is_passenger run return run ride @s dismount",
         "",
