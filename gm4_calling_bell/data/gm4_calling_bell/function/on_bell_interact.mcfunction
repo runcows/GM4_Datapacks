@@ -4,8 +4,9 @@
 
 advancement revoke @s only gm4_calling_bell:ring_bell
 
+# TODO: remove raw and bolt require later
 # fail if player already used today
-execute store result score $day gm4_calling_bell run time query day repetition
+raw execute store result score $day gm4_calling_bell run time query day repetition
 execute if score @s gm4_calling_bell = $day gm4_calling_bell run return run playsound entity.wandering_trader.no neutral @a[distance=..16] ~ ~ ~ 1 1 0.6
 
 execute store result score $ray gm4_calling_bell run attribute @s minecraft:block_interaction_range get 10
