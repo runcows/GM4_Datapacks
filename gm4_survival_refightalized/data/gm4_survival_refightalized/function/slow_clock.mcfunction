@@ -1,5 +1,6 @@
 schedule function gm4_survival_refightalized:slow_clock 30s
 
+# TODO: remove raw and bolt require later
 # get moon cycle (0 = new moon, 4 = full moon)
 raw execute store result score $moon gm4_sr_data run time query day repetition
 scoreboard players operation $moon gm4_sr_data %= #8 gm4_sr_data

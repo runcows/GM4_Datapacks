@@ -2,6 +2,7 @@
 # at 29999998 1 7134 (forceloaded chunk)
 # run from gm4_mysterious_midnights:start_midnight
 
+# TODO: remove raw and bolt require later
 # generate random number from 0 to 15
 raw execute store result storage gm4_mysterious_midnights:temp day int 1 run time query day repetition
 function gm4_mysterious_midnights:roll_difficulty with storage gm4_mysterious_midnights:temp
