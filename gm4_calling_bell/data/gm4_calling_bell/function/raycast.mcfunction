@@ -4,6 +4,6 @@
 
 scoreboard players remove $ray gm4_calling_bell 1
 
-execute if block ~ ~ ~ bell align xyz positioned ~0.5 ~1 ~0.5 run return run function gm4_calling_bell:check_trader_hitbox
+execute if block ~ ~ ~ bell align xyz positioned ~0.5 ~1 ~0.5 run return run function gm4_calling_bell:summon_trader
 
 execute if score $ray gm4_calling_bell matches 1.. positioned ^ ^ ^0.1 run function gm4_calling_bell:raycast
