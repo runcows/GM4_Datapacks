@@ -1,6 +1,6 @@
 id: gm4_standard_crafting
 name: Standard Crafting
-version: 1.8.X
+version: 2.0.X
 
 data_pack:
   load: .
