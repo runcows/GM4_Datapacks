@@ -20,7 +20,6 @@ pipeline:
 
 meta:
   gm4:
-    minecraft: []
     versioning:
       required:
         lib_forceload: 1.6.0
@@ -44,6 +43,7 @@ meta:
         - Bloo
         - Lue
         - BPR
+        - Misode
       Textures:
         - Memo
         - Kyrius
