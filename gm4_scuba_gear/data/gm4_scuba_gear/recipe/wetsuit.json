@@ -19,9 +19,7 @@
     "components": {
       "minecraft:item_name": {
         "translate": "item.gm4.wetsuit",
-        "fallback": "Wetsuit",
-        "color": "white",
-        "italic": false
+        "fallback": "Wetsuit"
       },
       "minecraft:max_damage": 180,
       "!minecraft:enchantable": {},

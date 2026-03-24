@@ -12,9 +12,7 @@
               "components": {
                 "minecraft:item_name": {
                   "translate": "item.gm4.wetsuit",
-                  "fallback": "Wetsuit",
-                  "color": "white",
-                  "italic": false
+                  "fallback": "Wetsuit"
                 },
                 "minecraft:custom_data": {
                   "gm4_scuba_gear": {

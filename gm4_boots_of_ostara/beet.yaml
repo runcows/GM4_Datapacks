@@ -1,6 +1,6 @@
 id: gm4_boots_of_ostara
 name: Boots of Ostara
-version: 1.8.X
+version: 1.9.X
 
 data_pack:
   load: .
@@ -10,13 +10,10 @@ resource_pack:
 
 pipeline:
   - gm4.plugins.extend.module
-  - gm4.plugins.include.lib_custom_crafters
 
 meta:
   gm4:
     versioning:
-      required:
-        lib_custom_crafters: 3.4.0
       schedule_loops: [main]
     model_data:
       - item: leather_boots

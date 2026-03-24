@@ -1,6 +1,6 @@
 id: gm4_scuba_gear
 name: SCUBA Gear
-version: 2.0.X
+version: 2.1.X
 
 data_pack:
   load: .
@@ -10,13 +10,10 @@ resource_pack:
 
 pipeline:
   - gm4.plugins.extend.module
-  - gm4.plugins.include.lib_custom_crafters
 
 meta:
   gm4:
     versioning:
-      required:
-        lib_custom_crafters: 3.4.0
       schedule_loops: [main]
     website:
       description: Ease ocean exploration with craftable scuba gear!

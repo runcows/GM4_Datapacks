@@ -12,9 +12,7 @@
               "components": {
                 "minecraft:item_name": {
                   "translate": "item.gm4.flippers",
-                  "fallback": "Flippers",
-                  "color": "white",
-                  "italic": false
+                  "fallback": "Flippers"
                 },
                 "minecraft:attribute_modifiers": [
                   {

@@ -18,9 +18,7 @@
     "components": {
       "minecraft:item_name": {
         "translate": "item.gm4.scuba_helmet",
-        "fallback": "SCUBA Helmet",
-        "color": "white",
-        "italic": false
+        "fallback": "SCUBA Helmet"
       },
       "minecraft:attribute_modifiers": [
         {

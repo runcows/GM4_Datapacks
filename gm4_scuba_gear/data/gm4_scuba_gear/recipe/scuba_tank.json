@@ -19,9 +19,7 @@
     "components": {
       "minecraft:item_name": {
         "translate": "item.gm4.scuba_tank",
-        "fallback": "SCUBA Tank",
-        "color": "white",
-        "italic": false
+        "fallback": "SCUBA Tank"
       },
       "minecraft:attribute_modifiers": [
         {
