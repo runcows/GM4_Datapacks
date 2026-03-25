@@ -1,12 +1,15 @@
 id: gm4_lively_lily_pads
 name: Lively Lily Pads
-version: 3.2.X
+version: 3.3.X
 
 data_pack:
   load: .
 
 pipeline:
   - gm4.plugins.extend.module
+
+require:
+  - bolt
 
 meta:
   gm4:
