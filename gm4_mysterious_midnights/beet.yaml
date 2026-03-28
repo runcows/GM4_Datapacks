@@ -9,9 +9,6 @@ pipeline:
   - gm4.plugins.extend.module
   - gm4.plugins.include.lib_forceload
 
-require:
-  - bolt
-
 meta:
   gm4:
     versioning:
