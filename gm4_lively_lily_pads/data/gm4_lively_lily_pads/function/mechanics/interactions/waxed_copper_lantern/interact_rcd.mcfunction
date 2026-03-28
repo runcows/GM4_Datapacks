@@ -22,8 +22,7 @@ execute as @e[type=interaction,tag=gm4_llp_waxed_copper_rcd,distance=..8] if dat
 execute if score $scraped gm4_llp.data matches 0 run return fail
 
 # update axe durability
-# TODO: remove raw and bolt require when mecha is updated
 execute if score $mainhand gm4_llp.data matches 1 if entity @s[gamemode=!creative] run function gm4_lively_lily_pads:mechanics/interactions/waxed_copper_lantern/used_mainhand_axe
-raw execute if score $mainhand gm4_llp.data matches 1 run swing @s mainhand
+execute if score $mainhand gm4_llp.data matches 1 run swing @s mainhand
 execute if score $offhand gm4_llp.data matches 1 if entity @s[gamemode=!creative] run function gm4_lively_lily_pads:mechanics/interactions/waxed_copper_lantern/used_offhand_axe
-raw execute if score $offhand gm4_llp.data matches 1 run swing @s offhand
+execute if score $offhand gm4_llp.data matches 1 run swing @s offhand

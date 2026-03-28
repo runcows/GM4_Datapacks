@@ -3,8 +3,7 @@
 # at @s
 # run from mechanics/interactions/candle/find_igniter
 
-# TODO: remove raw and bolt require when mecha is updated
-raw swing @s offhand
+swing @s offhand
 # sound
 playsound minecraft:item.firecharge.use player @a[distance=..16]
 
